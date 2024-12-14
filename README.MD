@@ -147,4 +147,4 @@ Este projeto é distribuído sob a licença MIT. Veja o arquivo LICENSE para mai
 ## 📚 Referências
 [Documentação TensorFlow](https://www.tensorflow.org/learn?hl=pt-br)
 [Documentação Scikit-learn](https://scikit-learn.org/stable/user_guide.html)
-[Documentação AWS SageMaker] (https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html)
+[Documentação AWS SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html)
