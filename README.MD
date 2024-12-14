@@ -103,6 +103,7 @@ y_pred = (model.predict(X_scaled) > 0.5).astype(int)
 print(classification_report(y, y_pred))
 ```
 
+--- 
 ## 📊 Visualizações
 
 1. **Distribuições** 
@@ -113,7 +114,7 @@ print(classification_report(y, y_pred))
      - Avalia a sensibilidade e especificidade do modelo.
 4. **Matriz de Confusão** 
      - Visualiza erros de classificação.
-
+---
 ## 🌱 Monitoramento Ambiental
 O projeto incorpora o monitoramento do consumo energético usando CodeCarbon:
 ```
@@ -127,7 +128,7 @@ tracker.start()
 ```
 tracker.stop()
 ```
-
+---
 ## 📈 Resultados
 1. **Acurácia**
      - Regressão Logística: ~79%
@@ -136,10 +137,10 @@ tracker.stop()
 3. **Principais Insights**
      - Colesterol elevado está altamente correlacionado com doenças em homens.
      - Frequência cardíaca máxima é um preditor chave.   
-
+---
 ## 📝 Licença
 Este projeto é distribuído sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
-
+--- 
 ## 📚 Referências
 Documentação TensorFlow
 Documentação Scikit-learn
