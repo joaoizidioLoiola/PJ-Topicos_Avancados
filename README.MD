@@ -1,4 +1,4 @@
-# 🫀 Análise Preditiva de Doenças Cardiovasculares
+### 🫀 Análise Preditiva de Doenças Cardiovasculares
 
 Este projeto de **Machine Learning** aplica técnicas de **Aprendizado Supervisionado** e **Redes Neurais Profundas** para análise preditiva de doenças cardiovasculares. Inclui **visualizações avançadas** e **monitoramento de consumo energético**, com o objetivo de identificar padrões e prever a presença de doenças cardiovasculares.
 
@@ -53,25 +53,31 @@ pip install numpy pandas matplotlib seaborn scikit-learn tensorflow codecarbon
 
 ---
 ## 🚀 Como Usar
-1️⃣ Carregar e Preparar os Dados
-python
-Copiar código
-import pandas as pd
+## 1️⃣ Carregar e Preparar os Dados
+```
+python import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
-
+```
 ## Carregar dados
+```
 data = pd.read_csv("data/Cardiovascular_Disease_Dataset.csv")
+```
 
 ## Separar features e target
+```
 X = data.drop(['patientid', 'target'], axis=1)
 y = data['target']
-
+```
 ## Normalizar os dados
+```
 scaler = MinMaxScaler(feature_range=(0, 1))
 X_scaled = scaler.fit_transform(X)
+```
 
-2️⃣ Treinamento do Modelo de Deep Learning
+## 2️⃣ Treinamento do Modelo de Deep Learning
+```
 python from tensorflow.keras import layers, Sequential
+```
 
 ## Configurar e treinar o modelo
 ```
