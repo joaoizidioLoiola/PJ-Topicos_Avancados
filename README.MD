@@ -30,12 +30,8 @@ Este projeto de **Machine Learning** aplica técnicas de **Aprendizado Supervisi
 projeto/
 ├── data/
 │   └── Cardiovascular_Disease_Dataset.csv  # Dataset principal
-├── src/
-│   ├── preprocessing.py  # Scripts de pré-processamento
-│   ├── model.py          # Definição e treinamento dos modelos
-│   └── visualization.py  # Geração de gráficos e análises visuais
 └── notebooks/
-    └── analysis.ipynb    # Notebook para análise exploratória
+    └── TesteTopicosAvançados_T1.ipynb   # Notebook para análise exploratória
 
 ```
 
