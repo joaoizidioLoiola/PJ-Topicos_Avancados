@@ -128,10 +128,7 @@ python from codecarbon import EmissionsTracker
 
 tracker = EmissionsTracker()
 tracker.start()
-```
-## Treinamento ou processos de alto custo computacional
 
-```
 tracker.stop()
 ```
 ---
@@ -148,6 +145,6 @@ tracker.stop()
 Este projeto é distribuído sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
 --- 
 ## 📚 Referências
-Documentação TensorFlow
-Documentação Scikit-learn
-Documentação AWS SageMaker
+[Documentação TensorFlow](https://www.tensorflow.org/learn?hl=pt-br)
+[Documentação Scikit-learn](https://scikit-learn.org/stable/user_guide.html)
+[Documentação AWS SageMaker] (https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html)
