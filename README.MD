@@ -36,35 +36,45 @@ projeto/
 │   └── visualization.py  # Geração de gráficos e análises visuais
 └── notebooks/
     └── analysis.ipynb    # Notebook para análise exploratória
-🔧 Requisitos
+
+```
+
+--- 
+
+## 🔧 Requisitos
+
 Antes de começar, certifique-se de ter o Python 3.7+ instalado. Instale as dependências do projeto com o comando abaixo:
 
+
+```
 bash
-Copiar código
 pip install numpy pandas matplotlib seaborn scikit-learn tensorflow codecarbon
-🚀 Como Usar
+```
+
+---
+## 🚀 Como Usar
 1️⃣ Carregar e Preparar os Dados
 python
 Copiar código
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 
-# Carregar dados
+## Carregar dados
 data = pd.read_csv("data/Cardiovascular_Disease_Dataset.csv")
 
-# Separar features e target
+## Separar features e target
 X = data.drop(['patientid', 'target'], axis=1)
 y = data['target']
 
-# Normalizar os dados
+## Normalizar os dados
 scaler = MinMaxScaler(feature_range=(0, 1))
 X_scaled = scaler.fit_transform(X)
-2️⃣ Treinamento do Modelo de Deep Learning
-python
-Copiar código
-from tensorflow.keras import layers, Sequential
 
-# Configurar e treinar o modelo
+2️⃣ Treinamento do Modelo de Deep Learning
+python from tensorflow.keras import layers, Sequential
+
+## Configurar e treinar o modelo
+```
 model = Sequential([
     layers.Input(shape=(X_scaled.shape[1],)),
     layers.Dense(100, activation='relu'),
@@ -76,44 +86,61 @@ model = Sequential([
 model.compile(optimizer='adam', 
               loss='binary_crossentropy', 
               metrics=['accuracy'])
+```
 
-# Treinamento
+## Treinamento
+```
 model.fit(X_scaled, y, epochs=50, batch_size=32, validation_split=0.2)
-3️⃣ Avaliar o Modelo
-python
-Copiar código
-from sklearn.metrics import classification_report
+```
+## 3️⃣ Avaliar o Modelo
+```
+python from sklearn.metrics import classification_report
+```
 
-# Predição e relatório
+## Predição e relatório
+```
 y_pred = (model.predict(X_scaled) > 0.5).astype(int)
 print(classification_report(y, y_pred))
-📊 Visualizações
-Distribuições: Histogramas e gráficos de barras ajudam a explorar variáveis como idade e tipo de dor no peito.
-Matriz de Correlação: Identifica relações entre as variáveis.
-Curva ROC: Avalia a sensibilidade e especificidade do modelo.
-Matriz de Confusão: Visualiza erros de classificação.
-🌱 Monitoramento Ambiental
-O projeto incorpora o monitoramento do consumo energético usando CodeCarbon:
+```
 
-python
-Copiar código
-from codecarbon import EmissionsTracker
+## 📊 Visualizações
+
+1. **Distribuições** 
+     - Histogramas e gráficos de barras ajudam a explorar variáveis como idade e tipo de dor no peito.
+2. **Matriz de Correlação**
+     - Identifica relações entre as variáveis.
+3. **Curva ROC** 
+     - Avalia a sensibilidade e especificidade do modelo.
+4. **Matriz de Confusão** 
+     - Visualiza erros de classificação.
+
+## 🌱 Monitoramento Ambiental
+O projeto incorpora o monitoramento do consumo energético usando CodeCarbon:
+```
+python from codecarbon import EmissionsTracker
 
 tracker = EmissionsTracker()
 tracker.start()
-# Treinamento ou processos de alto custo computacional
+```
+## Treinamento ou processos de alto custo computacional
+
+```
 tracker.stop()
-📈 Resultados
-Acurácia:
-Regressão Logística: ~79%
-Rede Neural: ~96%
-Principais Insights:
-Colesterol elevado está altamente correlacionado com doenças em homens.
-Frequência cardíaca máxima é um preditor chave.
-📝 Licença
+```
+
+## 📈 Resultados
+1. **Acurácia**
+     - Regressão Logística: ~79%
+2. **Rede Neural**
+     - ~96%
+3. **Principais Insights**
+     - Colesterol elevado está altamente correlacionado com doenças em homens.
+     - Frequência cardíaca máxima é um preditor chave.   
+
+## 📝 Licença
 Este projeto é distribuído sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
-📚 Referências
+## 📚 Referências
 Documentação TensorFlow
 Documentação Scikit-learn
 Documentação AWS SageMaker
