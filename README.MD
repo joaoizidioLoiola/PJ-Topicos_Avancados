@@ -60,7 +60,7 @@ from sklearn.preprocessing import MinMaxScaler
 ```
 ## Carregar dados
 ```
-data = pd.read_csv("data/Cardiovascular_Disease_Dataset.csv")
+data = pd.read_csv("Cardiovascular_Disease_Dataset.csv")
 ```
 
 ## Separar features e target
