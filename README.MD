@@ -1,92 +1,119 @@
-# Análise Preditiva de Doenças Cardiovasculares
+# 🫀 Análise Preditiva de Doenças Cardiovasculares
 
-## 📋 Descrição
-Projeto de machine learning para predição de doenças cardiovasculares utilizando redes neurais e monitoramento de consumo energético.
+Este projeto de **Machine Learning** aplica técnicas de **Aprendizado Supervisionado** e **Redes Neurais Profundas** para análise preditiva de doenças cardiovasculares. Inclui **visualizações avançadas** e **monitoramento de consumo energético**, com o objetivo de identificar padrões e prever a presença de doenças cardiovasculares.
 
-## 🔧 Requisitos
+---
 
-### Instalação das dependências
-```bash
-pip install numpy pandas matplotlib seaborn scikit-learn tensorflow codecarbon
-```
+## 📋 Funcionalidades
+
+1. **Preparação e Análise dos Dados**:
+   - Exploração inicial de dados para entender distribuições e correlações.
+   - Normalização das variáveis para otimizar o desempenho dos modelos.
+
+2. **Modelagem e Predição**:
+   - Modelos tradicionais de Machine Learning como Regressão Logística.
+   - Modelos avançados de Deep Learning usando TensorFlow/Keras.
+   - Redução de dimensionalidade utilizando PCA.
+
+3. **Visualizações Informativas**:
+   - Histogramas, gráficos de barras, e matrizes de correlação para análise exploratória.
+   - Curva ROC e Matriz de Confusão para avaliar o desempenho do modelo.
+
+4. **Monitoramento Sustentável**:
+   - Rastreamento do consumo energético e cálculo da pegada de carbono com a biblioteca **CodeCarbon**.
+
+---
 
 ## 📦 Estrutura do Projeto
-```
+
+```plaintext
 projeto/
 ├── data/
-│   └── Cardiovascular_Disease_Dataset.csv
+│   └── Cardiovascular_Disease_Dataset.csv  # Dataset principal
 ├── src/
-│   ├── preprocessing.py
-│   ├── model.py
-│   └── visualization.py
+│   ├── preprocessing.py  # Scripts de pré-processamento
+│   ├── model.py          # Definição e treinamento dos modelos
+│   └── visualization.py  # Geração de gráficos e análises visuais
 └── notebooks/
- └── analysis.ipynb
-```
+    └── analysis.ipynb    # Notebook para análise exploratória
+🔧 Requisitos
+Antes de começar, certifique-se de ter o Python 3.7+ instalado. Instale as dependências do projeto com o comando abaixo:
 
-## 🚀 Como Usar
+bash
+Copiar código
+pip install numpy pandas matplotlib seaborn scikit-learn tensorflow codecarbon
+🚀 Como Usar
+1️⃣ Carregar e Preparar os Dados
+python
+Copiar código
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
 
-### 1. Preparação dos Dados
-```python
-# Carregar e preparar dados
-data = pd.read_csv("Cardiovascular_Disease_Dataset.csv")
+# Carregar dados
+data = pd.read_csv("data/Cardiovascular_Disease_Dataset.csv")
+
+# Separar features e target
 X = data.drop(['patientid', 'target'], axis=1)
 y = data['target']
-```
 
-### 2. Normalização
-```python
-# Normalizar dados
+# Normalizar os dados
 scaler = MinMaxScaler(feature_range=(0, 1))
-X_train_scaled = scaler.fit_transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-```
+X_scaled = scaler.fit_transform(X)
+2️⃣ Treinamento do Modelo de Deep Learning
+python
+Copiar código
+from tensorflow.keras import layers, Sequential
 
-### 3. Treinamento do Modelo
-```python
-# Configurar e treinar modelo
-model = keras.Sequential([
- keras.Input(shape=(12,)),
- layers.Dense(100, activation='relu'),
- layers.Dropout(0.5),
- layers.Dense(100, activation='relu'),
- layers.Dense(1, activation='sigmoid')
+# Configurar e treinar o modelo
+model = Sequential([
+    layers.Input(shape=(X_scaled.shape[1],)),
+    layers.Dense(100, activation='relu'),
+    layers.Dropout(0.5),
+    layers.Dense(100, activation='relu'),
+    layers.Dense(1, activation='sigmoid')
 ])
 
 model.compile(optimizer='adam', 
-     loss='binary_crossentropy', 
-     metrics=['accuracy'])
-```
+              loss='binary_crossentropy', 
+              metrics=['accuracy'])
 
-## 📊 Visualizações
-- Matriz de Correlação
-- Distribuição de Classes
-- Curva ROC
-- Matriz de Confusão
+# Treinamento
+model.fit(X_scaled, y, epochs=50, batch_size=32, validation_split=0.2)
+3️⃣ Avaliar o Modelo
+python
+Copiar código
+from sklearn.metrics import classification_report
 
-## 📈 Resultados
-- Acurácia: ~96%
-- Precisão por classe
-- Consumo energético monitorado
+# Predição e relatório
+y_pred = (model.predict(X_scaled) > 0.5).astype(int)
+print(classification_report(y, y_pred))
+📊 Visualizações
+Distribuições: Histogramas e gráficos de barras ajudam a explorar variáveis como idade e tipo de dor no peito.
+Matriz de Correlação: Identifica relações entre as variáveis.
+Curva ROC: Avalia a sensibilidade e especificidade do modelo.
+Matriz de Confusão: Visualiza erros de classificação.
+🌱 Monitoramento Ambiental
+O projeto incorpora o monitoramento do consumo energético usando CodeCarbon:
 
-## 🔬 Métricas de Avaliação
-```python
-# Avaliação do modelo
-print(classification_report(y_test, y_pred))
-```
+python
+Copiar código
+from codecarbon import EmissionsTracker
 
-## 🌱 Monitoramento Ambiental
-```python
-# Monitorar consumo energético
 tracker = EmissionsTracker()
 tracker.start()
-# ... treinamento ...
+# Treinamento ou processos de alto custo computacional
 tracker.stop()
-```
+📈 Resultados
+Acurácia:
+Regressão Logística: ~79%
+Rede Neural: ~96%
+Principais Insights:
+Colesterol elevado está altamente correlacionado com doenças em homens.
+Frequência cardíaca máxima é um preditor chave.
+📝 Licença
+Este projeto é distribuído sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
-## 📝 Licença
-Este projeto está sob a licença MIT.
-
-## 📚 Referências
-- [TensorFlow Documentation](https://www.tensorflow.org/learn)
-- [Scikit-learn Documentation](https://scikit-learn.org/stable/user_guide.html)
-- [AWS SageMaker Documentation](https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html)
+📚 Referências
+Documentação TensorFlow
+Documentação Scikit-learn
+Documentação AWS SageMaker
